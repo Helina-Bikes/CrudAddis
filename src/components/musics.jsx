@@ -1,0 +1,238 @@
+import React, { useEffect, useState } from "react";
+import UpdateMusic from "./update";
+import { Icon } from '@iconify/react';
+import { ToastContainer, toast } from 'react-toastify';
+import { useSelector, useDispatch } from "react-redux";
+import { MusicList } from "../redux/action";
+import { musicTOUpdate, selectedMusic,deleteMusic, searchMusic } from "../redux/selectedAction";
+import { css } from "@emotion/css";
+
+const Musics = () => {
+    // const [userResponse, setUserResponse] = useState('');
+
+    const musicPerPage = 3;
+
+    const music = useSelector((state) => state.MusicReducer)
+    console.log("this is from music page", music);
+
+    const selected_music = useSelector((state) => state.selectedMusic)
+    console.log("this is the selected music from music ", selected_music);
+
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(MusicList())
+    }, [])
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalMusicPages = Math.ceil(music.length / musicPerPage);
+    const startIndex = (currentPage - 1) * musicPerPage;
+    const endIndex = startIndex + musicPerPage;
+    const displayedMusic = music.slice(startIndex, endIndex);
+
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+    const handleShowUpdateModal = (music) => {
+        dispatch(musicTOUpdate(music))
+        setShowUpdateModal(true);
+        console.log("This is from update");
+    };
+
+    const handleCloseUpdateModal = () => {
+        setShowUpdateModal(false);
+    };
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+    const handleDelete = (id) => {
+        // toast.info('Are you sure you want to delete this item?', {
+        //     // position: toast.POSITION.TOP_CENTER,
+        //     // containerId: 'toast-container',
+        //     // autoClose: false,
+        //     // closeOnClick: false,
+        //     // draggable: false,
+        //     // closeButton: true,
+        //     // onClose: () => {
+        //     //     if (userResponse === 'yes') {
+        //     //         deleteItem();
+        //     //     }
+        //     // },
+        //     // render: ({ closeToast }) => (
+        //     //     <div>
+        //     //         <span>Are you sure you want to delete this item?</span>
+        //     //         <button onClick={() => handleConfirm('yes', closeToast)}>Yes</button>
+        //     //         <button onClick={() => handleConfirm('no', closeToast)}>No</button>
+        //     //     </div>
+        //     // ),
+        // });
+        //  alert("confirm your action")
+
+        const userResponse = window.confirm('Are you sure you want to delete this item?');
+        console.log(userResponse,id);
+        if (userResponse) {
+           dispatch(deleteMusic(id))
+           setTimeout(() => {
+               window.location.reload()
+           }, 100);
+        //    window.location.reload()
+        }
+
+    };
+
+    // const handleConfirm = (response, closeToast) => {
+    //     setUserResponse(response);
+    //     closeToast();
+    // };
+
+    // const deleteItem = () => {
+    //     console.log("Item Deleted");
+    // }
+
+    const handleselect = (music) => {
+        console.log("ID = ", music.id);
+        dispatch(selectedMusic(music))
+    }
+
+
+    return (
+        <>
+
+            <UpdateMusic show={showUpdateModal} onClose={handleCloseUpdateModal} music={music} />
+            <div className={css`
+                            width: 100%;
+                            height: 55vh;
+                            // border-radius:40px 0px 0px 0px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            gap: 5px;
+                            margin-top:5px;
+            `}>
+                <input className={css`
+                            background: transparent;
+                            color: white;
+                            border: none;
+                            border-bottom:1px solid #fff;
+                            width: 75%;
+                            font-size: 18px;
+                            margin:10px 0px ;
+                            &:focus{
+                                outline: none;
+                            }
+                `} type="text" placeholder="Search by song title / artist"  onChange={(event)=>dispatch(searchMusic(event.target.value))}/>
+                {displayedMusic?.map((musicItem) => (
+                    <div key={musicItem?.id} className={css`
+                            width: 100%;
+                            height: 15%;
+                            color: white;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 10px;
+                            background-color: rgb(0, 0, 0);
+                            opacity: .8;
+                            &:hover{
+                                transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 2);
+                                box-shadow: 10px 13px 40px 1px rgba(43, 215, 106, 0.4);
+                            }
+                    `}>
+                        <div className={css`
+                                display: flex;
+                                gap: 20px;
+                               
+                        `}>
+                            <img className={css`
+                             width: 100px;
+                             height: 60px;
+                             border-radius: 10px;
+                            `} src={musicItem?.image} alt="not found" />
+                            <div className={css`
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                               
+                            `}>
+                                <h3 className={css`
+                                    margin: 0;
+                                    font-size: 15px;
+                                `}>{musicItem?.title}</h3>
+                                <p className={css`
+                                    margin: 0;
+                                    font-size: 15px;
+                                `}>{musicItem?.date}</p>
+                            </div>
+                        </div>
+                        <div className={css`
+                            display: flex;
+                            gap:20px;
+                            margin-right: 20px;
+                        `}>
+                            <Icon onClick={() => handleselect(musicItem)} className={css`
+                            cursor: pointer;
+                            &:hover{
+                                border-radius: 100%;
+                                background-color: rgb(138, 224, 246);
+                                transition: all 0.8s cubic-bezier(0.175, 0.885, 4, 2);
+                            }
+                            `} icon="icon-park-solid:play" />
+                            <Icon className={css`
+                                cursor: pointer;
+                                color: red;
+                                background-color: red;
+                                background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            `} icon="mdi:heart-outline" />
+                            <Icon className={css`
+                            cursor: pointer;
+                            `} onClick={() => handleShowUpdateModal(musicItem)} icon="mdi:edit-outline" />
+                            <Icon className={css`
+                            cursor: pointer;
+                            `} onClick={()=>handleDelete(musicItem.id)} icon="uiw:delete" />
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className={css`
+                        padding: 5px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        align-items: center;
+                        width: 50%;
+                        position: absolute;
+                        bottom: 113px;
+                        left: 0;
+                        right: 0;
+                        margin:auto;
+            `}>
+                {Array.from({ length: totalMusicPages }, (_, index) => (
+                    <button 
+                        key={index + 1}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={css`
+                            background-color: #070707;
+                            width: 30px;
+                            height: 25px;
+                            border: none;
+                            color: white;
+                        `}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
+            {/* <ToastContainer className="toast-container" /> */}
+
+        </>
+
+    )
+}
+export default Musics
+
+
+// currentPage === index + 1 ? "active" : ""
+

@@ -1,12 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home'
-import Navebar from './components/navbar';
+import { css } from '@emotion/css';
 
 function App() {
   return (
-    <div className="App">
-      <Navebar />
+    <div className={css`
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+    `}>
      <Home />
     </div>
   );
