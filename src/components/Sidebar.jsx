@@ -29,7 +29,7 @@ const Sidebar = () => {
             <img className={css`
             width: 100%;
             border-radius:30px 0px 0px 0px;
-            `} src="https://drive.google.com/file/d/1H46ijDg1Nj5WC7Hdw4aWSHccgG-pgIsK/view?usp=drive_link" alt="my music logo"/>
+            `} src="https://i.imgur.com/pqoF3SN.jpg" alt="my music logo"/>
             <h3>Home</h3>
             <button className={css`
             background-color: rgba(213, 176, 25, 0.618);
