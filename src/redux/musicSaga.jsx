@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 function* getmusic() {
-    let data = yield fetch("http://localhost:3001/music")
+    let data = yield fetch("https://music-5x7y.onrender.com/music")
     data = yield data.json()
     console.warn("this is get saga", data);
 
@@ -16,7 +16,7 @@ function* getmusic() {
 function* add_Music(data) {
     console.log("this is the id k ", data.data);
 
-    yield axios.post("http://localhost:3001/music", data.data)
+    yield axios.post("https://music-5x7y.onrender.com/music", data.data)
         .then(responce => {
             console.warn('this is search saga', responce.data);
             put({ type: SET_MUSIC_LIST, payload: responce.data });
@@ -29,7 +29,7 @@ function* add_Music(data) {
 function* update_Music(data) {
     console.log("this is the data to update ", data.data);
 
-    yield axios.put(`http://localhost:3001/music/${data.data.id}`, data.data)
+    yield axios.put(`https://music-5x7y.onrender.com/music/${data.data.id}`, data.data)
         .then(responce => {
             console.warn('this is search saga', responce.data);
             put({ type: SET_MUSIC_LIST, payload: responce.data });
@@ -42,7 +42,7 @@ function* update_Music(data) {
 function* delete_Music(data) {
     console.log("this is the data to delete ", data.data);
 
-    yield axios.delete(`http://localhost:3001/music/${data.data}`)
+    yield axios.delete(`https://music-5x7y.onrender.com/music/${data.data}`)
         .then(responce => {
             console.warn('this is search saga', responce.data);
             //   put({ type:SET_MUSIC_LIST, payload: responce.data });
@@ -54,7 +54,7 @@ function* delete_Music(data) {
 
 function* search_Music(data) {
     console.log("this is the data to search ", data.data);
-    let result = yield fetch(`http://localhost:3001/music?q=${data.data}`)
+    let result = yield fetch(`https://music-5x7y.onrender.com/music?q=${data.data}`)
     result = yield result.json()
     console.warn("this is search saga", result);
 
