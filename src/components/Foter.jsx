@@ -26,7 +26,6 @@ const Footer = () => {
              gap: 20px;
              padding: 20px;
              float: left;
-            
             `}>
                 <img className={css`
                  width: 100px;

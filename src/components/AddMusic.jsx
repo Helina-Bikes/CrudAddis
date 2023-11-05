@@ -11,6 +11,7 @@ const AddMusic = ({ show, onClose }) => {
     const [data, setData] = useState()
     const title = useRef()
     const image = useRef()
+    const duration = useRef()
     const relesedate = useRef()
     const artist = useRef()
     const genre = useRef()
@@ -21,6 +22,7 @@ const AddMusic = ({ show, onClose }) => {
             artist: artist.current.value, 
             image: image.current.value,
             date: relesedate.current.value, 
+            duration:duration.current.value,
             genre: genre.current.value
         })
     }
@@ -73,7 +75,7 @@ const AddMusic = ({ show, onClose }) => {
                                 padding: 5px;
                                 border-radius: 3px;
                                 border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={title} type="text" name='title' required />
+                                `} onChange={handleinputChange} ref={title} type="text" id='title' required />
                             </div>
                             <div className={css`
                              margin-bottom: 10px;
@@ -86,7 +88,7 @@ const AddMusic = ({ show, onClose }) => {
                                 padding: 5px;
                                 border-radius: 3px;
                                 border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={artist} type="text" name='artist' required />
+                                `} onChange={handleinputChange} ref={artist} type="text" id='artist' required />
                             </div>
                             <div className={css`
                              margin-bottom: 10px;
@@ -99,7 +101,20 @@ const AddMusic = ({ show, onClose }) => {
                                 padding: 5px;
                                 border-radius: 3px;
                                 border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={genre} type="text" name='genre' required/>
+                                `} onChange={handleinputChange} ref={genre} type="text" id='genre' required/>
+                            </div>
+                            <div className={css`
+                             margin-bottom: 10px;
+                            `}>
+                                <label className={css`
+                                 font-weight: bold;
+                                `} htmlFor="duration">Duration</label>
+                                <input className={css`
+                                width: 97%;
+                                padding: 5px;
+                                border-radius: 3px;
+                                border: 1px solid #838181;
+                                `} onChange={handleinputChange} ref={duration} type="text" id='duration' required/>
                             </div>
                             <div className={css`
                              margin-bottom: 10px;
@@ -112,7 +127,7 @@ const AddMusic = ({ show, onClose }) => {
                                 padding: 5px;
                                 border-radius: 3px;
                                 border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={relesedate} type="date" name='date' required/>
+                                `} onChange={handleinputChange} ref={relesedate} type="date" id='date' required/>
                             </div>
                             <div className={css`
                              margin-bottom: 10px;
@@ -125,7 +140,7 @@ const AddMusic = ({ show, onClose }) => {
                                 padding: 5px;
                                 border-radius: 3px;
                                 border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={image} type="text" name='image' required />
+                                `} onChange={handleinputChange} ref={image} type="text" id='image' required />
                             </div>
                             <div className={css`
                              width: 100%;
