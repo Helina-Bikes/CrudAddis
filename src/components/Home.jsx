@@ -19,7 +19,6 @@ const Home = () => {
             opacity: 0.8;
             display: flex;
             box-shadow: 0px 13px 20px 70px rgba(90, 219, 255, 0.4);
-            
         `}>
             <Sidebar />
             <div className={css`

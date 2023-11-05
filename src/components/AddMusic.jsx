@@ -10,7 +10,6 @@ const AddMusic = ({ show, onClose }) => {
 
     const [data, setData] = useState()
     const title = useRef()
-    const audio = useRef()
     const image = useRef()
     const relesedate = useRef()
     const artist = useRef()
@@ -22,7 +21,6 @@ const AddMusic = ({ show, onClose }) => {
             artist: artist.current.value, 
             image: image.current.value,
             date: relesedate.current.value, 
-            audio: audio.current.files[0], 
             genre: genre.current.value
         })
     }
@@ -115,19 +113,6 @@ const AddMusic = ({ show, onClose }) => {
                                 border-radius: 3px;
                                 border: 1px solid #838181;
                                 `} onChange={handleinputChange} ref={relesedate} type="date" name='date' required/>
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label className={css`
-                                 font-weight: bold;
-                                `} htmlFor="audio">Audio File</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={audio} type="file" name='audio' />
                             </div>
                             <div className={css`
                              margin-bottom: 10px;

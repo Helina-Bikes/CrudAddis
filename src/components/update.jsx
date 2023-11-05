@@ -122,19 +122,6 @@ const UpdateMusic = ({ show, onClose }) => {
                             `}>
                                 <label  className={css`
                                  font-weight: bold;
-                                `} htmlFor="audio">Audio File</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleInputChane} ref={audio} type="file" name='audio' />
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label  className={css`
-                                 font-weight: bold;
                                 `} htmlFor="image">URL FOR POSTER IMAGE</label>
                                 <input className={css`
                                 width: 97%;
