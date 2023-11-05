@@ -35,7 +35,7 @@ const Footer = () => {
                  width: 100px;
                  height: 80px;
                  border-radius:10px;
-                `} src={music[0]?.image ? music[0]?.image : "concept-eternal-theme.avif"} alt="image not found"></img>
+                `} src={music[0]?.image ? music[0]?.image : "https://img.freepik.com/premium-photo/concept-eternal-theme-about-eternity-music-musical-instruments-good-mood-ascended-aspiration-action-treble-clef-sheet-music_771426-4121.jpg?w=1060"} alt="image not found"></img>
                 <div className={css`
                  display: flex;
                  flex-direction: column;
