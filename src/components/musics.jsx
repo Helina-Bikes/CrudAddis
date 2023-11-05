@@ -50,9 +50,9 @@ const Musics = () => {
         console.log(userResponse,id);
         if (userResponse) {
            dispatch(deleteMusic(id))
-           setTimeout(() => {
-               window.location.reload()
-           }, 100);
+        //    setTimeout(() => {
+        //        window.location.reload()
+        //    }, 100);
         }
 
     };

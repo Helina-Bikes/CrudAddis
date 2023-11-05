@@ -44,7 +44,7 @@ function* delete_Music(data) {
 
     yield axios.delete(`https://music-5x7y.onrender.com/music/${data.data}`)
         .then(responce => {
-            console.warn('this is search saga', responce.data);
+            console.warn('this is search saga', responce);
             //   put({ type:SET_MUSIC_LIST, payload: responce.data });
         })
         .catch(error => {

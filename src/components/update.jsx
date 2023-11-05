@@ -62,7 +62,7 @@ const UpdateMusic = ({ show, onClose }) => {
                          margin-bottom: 20px;
                          `}>
                             UPDATE MUSIC</h1>
-                        <div className={css`
+                        <form onSubmit={() => handleupdate()} className={css`
                          display: flex;
                          flex-direction: column;
                         `}>
@@ -159,7 +159,7 @@ const UpdateMusic = ({ show, onClose }) => {
                                 background-color: #2c852f;
                                 color: white;
 
-                                `} onClick={() => handleupdate()}>Save</button>
+                                `} type='submit'>Save</button>
                                 <button className={css`
                                 padding: 8px 46px;
                                 border-radius: 3px;
@@ -169,7 +169,7 @@ const UpdateMusic = ({ show, onClose }) => {
                                 color: black;
                                 `} onClick={onClose}>cancel</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             )}

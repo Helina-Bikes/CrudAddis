@@ -60,7 +60,7 @@ const AddMusic = ({ show, onClose }) => {
                          font-size: 24px;
                          margin-bottom: 20px;
                          `}>ADD NEW MUSIC</h1>
-                        <div className={css`
+                        <form onSubmit={()=>Handleaddmusic()} className={css`
                          display: flex;
                          flex-direction: column;
                         `}>
@@ -156,7 +156,7 @@ const AddMusic = ({ show, onClose }) => {
                                 cursor: pointer;
                                 background-color: #2c852f;
                                 color: white;
-                                `} onClick={()=>Handleaddmusic()}>Add</button>
+                                `} type='submit' >Add</button>
                                 <button className={css`
                                 padding: 8px 46px;
                                 border-radius: 3px;
@@ -166,7 +166,7 @@ const AddMusic = ({ show, onClose }) => {
                                 color: black;
                                 `} onClick={onClose}>cancel</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             )}
