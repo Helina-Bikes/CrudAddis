@@ -28,7 +28,7 @@ const AddMusic = ({ show, onClose }) => {
     }
     const Handleaddmusic =  () => {
         dispatch(addMusic(data));
-    //    onClose()
+       onClose()
 
     }
 

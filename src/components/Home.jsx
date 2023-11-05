@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidebar from './Sidebar';
 import Footer from './Foter';
 import Musics from "./musics";
 import { useSelector } from "react-redux";
-// import { css } from "@emotion/react";
 import { css } from "@emotion/css";
 
-// "https://storage.googleapis.com/support-forums-api/attachment/thread-167859106-11127461031061801732.png" 
+
 const Home = () => {
     const music = useSelector((state) => state.selectedMusic)
     console.log("this is the selected music from home ", music);
-    // const music = useSelector((state) => state.MusicReducer)
-    // console.log("this is from home page", music);
-
+    
     return (
         <div className={css`
             margin: 0;
@@ -21,7 +18,6 @@ const Home = () => {
             background-color: rgb(0, 0, 0);
             opacity: 0.8;
             display: flex;
-            // border-radius: 40px;
             box-shadow: 0px 13px 20px 70px rgba(90, 219, 255, 0.4);
             
         `}>
@@ -30,18 +26,14 @@ const Home = () => {
               display: flex;
               flex-direction: column;
               width: 100%;
-            //   border-radius: 40px;
-             
             `}>
                 <div className={css`
                  width: 100%;
                  height: 45vh;
-                //  border-radius: 40px;
                 `}>
                     <img className={css`
                     width: 100%;
                     height: 45vh;
-                    // border-radius:0px 40px 0px 0px;
                     `} src={music[0]?.image ? music[0]?.image : "https://storage.googleapis.com/support-forums-api/attachment/thread-167859106-11127461031061801732.png"} alt="Not found" />
                 </div>
                 <Musics />

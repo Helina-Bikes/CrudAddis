@@ -10,8 +10,6 @@ const UpdateMusic = ({ show, onClose }) => {
     console.log("this is the selected music from update ", music[0]?.artist);
 
     const dispatch = useDispatch()
-
-
     const [updatemusic, setUpdatemusic] = useState()
     const title = useRef()
     const audio = useRef()
@@ -27,16 +25,12 @@ const UpdateMusic = ({ show, onClose }) => {
             artist: artist.current.value,
             image: image.current.value,
             date: relesedate.current.value,
-            // audio: audio.current.files[0],
             genre: genre.current.value
         })
     }
-    const handleupdate = (music) => {
-
-
-        dispatch(updateMusic(updatemusic));
-        // onclose
-
+    const handleupdate = () => {
+     dispatch(updateMusic(updatemusic));
+      onClose()
     }
     return (
         <>

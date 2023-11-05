@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import UpdateMusic from "./update";
 import { Icon } from '@iconify/react';
-import { ToastContainer, toast } from 'react-toastify';
 import { useSelector, useDispatch } from "react-redux";
 import { MusicList } from "../redux/action";
 import { musicTOUpdate, selectedMusic,deleteMusic, searchMusic } from "../redux/selectedAction";
 import { css } from "@emotion/css";
 
 const Musics = () => {
-    // const [userResponse, setUserResponse] = useState('');
-
     const musicPerPage = 3;
 
     const music = useSelector((state) => state.MusicReducer)
@@ -42,34 +39,13 @@ const Musics = () => {
 
     const handleCloseUpdateModal = () => {
         setShowUpdateModal(false);
+        window.location.reload()
     };
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
     const handleDelete = (id) => {
-        // toast.info('Are you sure you want to delete this item?', {
-        //     // position: toast.POSITION.TOP_CENTER,
-        //     // containerId: 'toast-container',
-        //     // autoClose: false,
-        //     // closeOnClick: false,
-        //     // draggable: false,
-        //     // closeButton: true,
-        //     // onClose: () => {
-        //     //     if (userResponse === 'yes') {
-        //     //         deleteItem();
-        //     //     }
-        //     // },
-        //     // render: ({ closeToast }) => (
-        //     //     <div>
-        //     //         <span>Are you sure you want to delete this item?</span>
-        //     //         <button onClick={() => handleConfirm('yes', closeToast)}>Yes</button>
-        //     //         <button onClick={() => handleConfirm('no', closeToast)}>No</button>
-        //     //     </div>
-        //     // ),
-        // });
-        //  alert("confirm your action")
-
         const userResponse = window.confirm('Are you sure you want to delete this item?');
         console.log(userResponse,id);
         if (userResponse) {
@@ -77,20 +53,9 @@ const Musics = () => {
            setTimeout(() => {
                window.location.reload()
            }, 100);
-        //    window.location.reload()
         }
 
     };
-
-    // const handleConfirm = (response, closeToast) => {
-    //     setUserResponse(response);
-    //     closeToast();
-    // };
-
-    // const deleteItem = () => {
-    //     console.log("Item Deleted");
-    // }
-
     const handleselect = (music) => {
         console.log("ID = ", music.id);
         dispatch(selectedMusic(music))
@@ -100,11 +65,10 @@ const Musics = () => {
     return (
         <>
 
-            <UpdateMusic show={showUpdateModal} onClose={handleCloseUpdateModal} music={music} />
+            <UpdateMusic show={showUpdateModal} onClose={()=>handleCloseUpdateModal()} music={music} />
             <div className={css`
                             width: 100%;
                             height: 55vh;
-                            // border-radius:40px 0px 0px 0px;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -153,8 +117,7 @@ const Musics = () => {
                             <div className={css`
                                 display: flex;
                                 flex-direction: column;
-                                align-items: center;
-                               
+                                align-items: center; 
                             `}>
                                 <h3 className={css`
                                     margin: 0;
@@ -225,7 +188,6 @@ const Musics = () => {
                     </button>
                 ))}
             </div>
-            {/* <ToastContainer className="toast-container" /> */}
 
         </>
 
@@ -233,6 +195,4 @@ const Musics = () => {
 }
 export default Musics
 
-
-// currentPage === index + 1 ? "active" : ""
 
