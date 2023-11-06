@@ -31,8 +31,8 @@ function* update_Music(data) {
 
     yield axios.put(`https://music-5x7y.onrender.com/music/${data.data.id}`, data.data)
         .then(responce => {
-            console.warn('this is search saga', responce.data);
-            put({ type: SET_MUSIC_LIST, payload: responce.data });
+            console.warn('this is update saga', responce);
+            put({ type:SET_MUSIC_LIST, payload: responce.data });
         })
         .catch(error => {
             console.error(error);

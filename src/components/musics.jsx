@@ -39,7 +39,9 @@ const Musics = () => {
 
     const handleCloseUpdateModal = () => {
         setShowUpdateModal(false);
-        // window.location.reload()
+           setTimeout(() => {
+               window.location.reload()
+           }, 1000);
     };
 
     const handlePageChange = (pageNumber) => {
@@ -50,9 +52,9 @@ const Musics = () => {
         console.log(userResponse,id);
         if (userResponse) {
            dispatch(deleteMusic(id))
-        //    setTimeout(() => {
-        //        window.location.reload()
-        //    }, 100);
+           setTimeout(() => {
+               window.location.reload()
+           }, 1000);
         }
 
     };
