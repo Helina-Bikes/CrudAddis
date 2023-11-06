@@ -39,7 +39,7 @@ const Musics = () => {
 
     const handleCloseUpdateModal = () => {
         setShowUpdateModal(false);
-        window.location.reload()
+        // window.location.reload()
     };
 
     const handlePageChange = (pageNumber) => {
