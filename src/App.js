@@ -1,4 +1,3 @@
-import './App.css';
 import Home from './components/Home'
 import { css } from '@emotion/css';
 

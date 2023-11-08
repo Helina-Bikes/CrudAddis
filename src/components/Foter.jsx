@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { css } from "@emotion/css";
 const Footer = () => {
     const music = useSelector((state) => state.selectedMusic)
+    const defmusic = useSelector((state) => state.MusicReducer)
     return (
         <div className={css`
         width: 100%;
@@ -30,7 +31,7 @@ const Footer = () => {
                  width: 100px;
                  height: 80px;
                  border-radius:10px;
-                `} src={music[0]?.image ? music[0]?.image : "https://img.freepik.com/premium-photo/concept-eternal-theme-about-eternity-music-musical-instruments-good-mood-ascended-aspiration-action-treble-clef-sheet-music_771426-4121.jpg?w=1060"} alt="image not found"></img>
+                `} src={music[0]?.image ? music[0]?.image : defmusic[1]?.image} alt="image not found"></img>
                 <div className={css`
                  display: flex;
                  flex-direction: column;

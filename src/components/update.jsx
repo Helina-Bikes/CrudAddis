@@ -1,6 +1,4 @@
-import axios from 'axios';
 import React, { useRef, useState } from 'react';
-import '../Modal.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateMusic } from '../redux/action';
 import { css } from '@emotion/css';

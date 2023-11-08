@@ -7,7 +7,7 @@ import { musicTOUpdate, selectedMusic,deleteMusic, searchMusic } from "../redux/
 import { css } from "@emotion/css";
 
 const Musics = () => {
-    const musicPerPage = 3;
+    const musicPerPage = 4;
 
     const music = useSelector((state) => state.MusicReducer)
    
@@ -42,6 +42,7 @@ const Musics = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
     const handleDelete = (id) => {
         const userResponse = window.confirm('Are you sure you want to delete this item?');
         if (userResponse) {
@@ -52,8 +53,8 @@ const Musics = () => {
         }
 
     };
+
     const handleselect = (music) => {
-      
         dispatch(selectedMusic(music))
     }
 
@@ -72,18 +73,7 @@ const Musics = () => {
                             gap: 5px;
                             margin-top:5px;
             `}>
-                <input className={css`
-                            background: transparent;
-                            color: white;
-                            border: none;
-                            border-bottom:1px solid #fff;
-                            width: 75%;
-                            font-size: 18px;
-                            margin:10px 0px ;
-                            &:focus{
-                                outline: none;
-                            }
-                `} type="text" placeholder="Search by song title / artist"  onChange={(event)=>dispatch(searchMusic(event.target.value))}/>
+               
                 {displayedMusic?.map((musicItem) => (
                     <div key={musicItem?.id} className={css`
                             width: 100%;
@@ -128,7 +118,7 @@ const Musics = () => {
                         <div className={css`
                             display: flex;
                             gap:20px;
-                            margin-right: 20px;
+                            margin-right: 40px;
                         `}>
                             <Icon onClick={() => handleselect(musicItem)} className={css`
                             cursor: pointer;
