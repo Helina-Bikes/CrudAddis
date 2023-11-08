@@ -139,13 +139,6 @@ const Musics = () => {
                             }
                             `} icon="icon-park-solid:play" />
                             <Icon className={css`
-                                cursor: pointer;
-                                color: red;
-                                background-color: red;
-                                background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                            `} icon="mdi:heart-outline" />
-                            <Icon className={css`
                             cursor: pointer;
                             `} onClick={() => handleShowUpdateModal(musicItem)} icon="mdi:edit-outline" />
                             <Icon className={css`
