@@ -7,7 +7,7 @@ import { musicTOUpdate, selectedMusic,deleteMusic, searchMusic } from "../redux/
 import { css } from "@emotion/css";
 
 const Musics = () => {
-    const musicPerPage = 4;
+    const musicPerPage = 3;
 
     const music = useSelector((state) => state.MusicReducer)
    
