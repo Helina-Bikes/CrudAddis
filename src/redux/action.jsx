@@ -30,10 +30,3 @@ export const likedMusic =(data)=>{
         data
     }
 }
-// export const selectedMusic = (data) =>{
-//     console.log("this is from the selected Action",data);
-//     return{
-//         type:SELECTED_MUSIC,
-//         data
-//     }
-// }

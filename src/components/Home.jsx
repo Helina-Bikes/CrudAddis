@@ -7,9 +7,7 @@ import { css } from "@emotion/css";
 
 
 const Home = () => {
-    const music = useSelector((state) => state.selectedMusic)
-    console.log("this is the selected music from home ", music);
-    
+    const music = useSelector((state) => state.selectedMusic) 
     return (
         <div className={css`
             margin: 0;

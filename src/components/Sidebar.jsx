@@ -6,7 +6,6 @@ const Sidebar = () => {
     const [showmodal, setshowmodal] = useState(false)
     const showADD = () => {
         setshowmodal(true)
-        console.log("this is from add");
     }
     function closemodal (){
         setshowmodal(false)

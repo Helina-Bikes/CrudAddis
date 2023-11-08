@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-// import '../Modal.css'
 import { useDispatch } from 'react-redux';
 import { addMusic } from '../redux/action';
 import { css } from '@emotion/css';
@@ -11,19 +10,15 @@ const AddMusic = ({ show, onClose }) => {
     const [data, setData] = useState()
     const title = useRef()
     const image = useRef()
-    const duration = useRef()
     const relesedate = useRef()
     const artist = useRef()
-    const genre = useRef()
-
-    const handleinputChange = (event) => {
+   
+    const handleinputChange = () => {
         setData({
             title: title.current.value,
             artist: artist.current.value, 
             image: image.current.value,
             date: relesedate.current.value, 
-            duration:duration.current.value,
-            genre: genre.current.value
         })
     }
     const Handleaddmusic =  () => {
@@ -89,32 +84,6 @@ const AddMusic = ({ show, onClose }) => {
                                 border-radius: 3px;
                                 border: 1px solid #838181;
                                 `} onChange={handleinputChange} ref={artist} type="text" id='artist' required />
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label className={css`
-                                 font-weight: bold;
-                                `} htmlFor="genre">Genre</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={genre} type="text" id='genre' required/>
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label className={css`
-                                 font-weight: bold;
-                                `} htmlFor="duration">Duration</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleinputChange} ref={duration} type="text" id='duration' required/>
                             </div>
                             <div className={css`
                              margin-bottom: 10px;

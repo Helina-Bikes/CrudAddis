@@ -10,12 +10,7 @@ const Musics = () => {
     const musicPerPage = 3;
 
     const music = useSelector((state) => state.MusicReducer)
-    console.log("this is from music page", music);
-
-    const selected_music = useSelector((state) => state.selectedMusic)
-    console.log("this is the selected music from music ", selected_music);
-
-
+   
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -49,7 +44,6 @@ const Musics = () => {
     };
     const handleDelete = (id) => {
         const userResponse = window.confirm('Are you sure you want to delete this item?');
-        console.log(userResponse,id);
         if (userResponse) {
            dispatch(deleteMusic(id))
            setTimeout(() => {
@@ -59,7 +53,7 @@ const Musics = () => {
 
     };
     const handleselect = (music) => {
-        console.log("ID = ", music.id);
+      
         dispatch(selectedMusic(music))
     }
 

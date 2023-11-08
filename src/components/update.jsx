@@ -7,16 +7,12 @@ import { css } from '@emotion/css';
 
 const UpdateMusic = ({ show, onClose }) => {
     const music = useSelector((state) => state.selectedMusic)
-    console.log("this is the selected music from update ", music[0]?.artist);
-
     const dispatch = useDispatch()
     const [updatemusic, setUpdatemusic] = useState()
     const title = useRef()
-    const duration = useRef()
     const image = useRef()
     const relesedate = useRef()
     const artist = useRef()
-    const genre = useRef()
 
     const handleInputChane = () => {
         setUpdatemusic({
@@ -25,8 +21,6 @@ const UpdateMusic = ({ show, onClose }) => {
             artist: artist.current.value,
             image: image.current.value,
             date: relesedate.current.value,
-            genre: genre.current.value,
-            duration:duration.current.value
         })
     }
     const handleupdate = () => {
@@ -91,32 +85,6 @@ const UpdateMusic = ({ show, onClose }) => {
                                 border-radius: 3px;
                                 border: 1px solid #838181;
                                 `} onChange={handleInputChane} ref={artist} type="text" name='artist' defaultValue={music[0]?.artist} required />
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label  className={css`
-                                 font-weight: bold;
-                                `} htmlFor="genre">Genre</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleInputChane} ref={genre} type="text" name='genre' defaultValue={music[0]?.genre} required />
-                            </div>
-                            <div className={css`
-                             margin-bottom: 10px;
-                            `}>
-                                <label  className={css`
-                                 font-weight: bold;
-                                `} htmlFor="duration">Duration</label>
-                                <input className={css`
-                                width: 97%;
-                                padding: 5px;
-                                border-radius: 3px;
-                                border: 1px solid #838181;
-                                `} onChange={handleInputChane} ref={duration} type="text" name='duration' defaultValue={music[0]?.duration} required />
                             </div>
                             <div className={css`
                              margin-bottom: 10px;

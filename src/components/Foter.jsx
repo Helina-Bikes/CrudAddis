@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { css } from "@emotion/css";
 const Footer = () => {
     const music = useSelector((state) => state.selectedMusic)
-    console.log("this is the selected music from footer ", music[0]?.artist);
     return (
         <div className={css`
         width: 100%;
